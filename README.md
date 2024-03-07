@@ -15,7 +15,7 @@ Piece(Character player): construct a piece with a specified player
 
 toString(): represent the piece as a string using its character representation.
 
-# Board Class
+# Board Class: hold each Piece(s) class
 
 This is the board, which is NxN, where N is input on the command line.  The default value of N should be 5.  The board itself should be a two-dimensional array of Pieces.
 
@@ -71,7 +71,7 @@ Enter at column 0-4: 0
 
 You will have to determine additional methods as we go along.  Obviously, documenting your work is essential since all of us are working on one application!
 
-# Connect4 Class
+# Connect4 Class: the roles of the game
 
 Connect4()
 
