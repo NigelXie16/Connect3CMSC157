@@ -7,6 +7,22 @@ All members of the group will make branches as they work on bits of this code.
 
 # Piece Class
 
+public class Piece {
+    public static char PLAYER1 = 'X';
+    public static char PLAYER2 = 'O';
+
+    // Constructor to initialize the piece with a specified player
+public Piece(char player) {
+    this.player = player;
+    }
+
+    // Method to represent the piece as a string 
+    @Override
+public String toString() {
+    return String.valueOf(player);
+    }
+
+    
 This class represents individual pieces.  Each piece has a character representation for its player; perhaps ‘X’ and ‘O’ are good for now.  These different representations indicate the players.  We should have constants for PLAYER1 (an ‘X’) and PLAYER2 (an ‘O’).  We may extend this in the future to include graphics, etc.
 
 Here are methods we’ll need:
