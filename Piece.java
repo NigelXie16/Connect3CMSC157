@@ -1,5 +1,5 @@
  class Piece {
-    public static char player = 'X';
+    public char player = 'X';
     //public static char PLAYER2 = 'O'; //maybe only 
 
     // Constructor to initialize the piece with a specified player
