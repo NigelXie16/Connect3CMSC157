@@ -10,6 +10,7 @@ class Board {
     // constructor, initially each spot set to null
     {
         len = 5;
+        B = new Piece[len][len];
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 B[i][j] = null;
@@ -21,6 +22,12 @@ class Board {
     // constructor
     {
         this.len = col;
+        B = new Piece[len][len];
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len; j++) {
+                B[i][j] = null;
+            }
+        }
     }
 
     public int getSize()
@@ -46,11 +53,11 @@ class Board {
         }
         s += "\n";
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j < len; j++) {
-                if (B[i][j] == null) {
+            for (int j = 0; j <= len; j++) {
+                if (B[j][i] == null) {
                     s += "| ";
                 } else {
-                    s += "|" + B[i][j].toString();
+                    s += "|" + B[j][i].toString();
                 }
             }
             s += "|\n";
@@ -73,8 +80,10 @@ public static void main(String[] args)
     //test the class
     Board b=new Board();
     System.out.println(b.toString());
-    Piece p=new Piece(char);
+    Piece p=new Piece('x');
+    Piece p1=new Piece('x');
     b.add(p, 0);
+    b.add(p1, 0);
     System.out.println(b.toString());
 }
 
