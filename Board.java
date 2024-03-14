@@ -37,7 +37,7 @@ public String toString()
 public add(Piece P, int col)
 //add piece to a column     
 {
-    while(int j=0; j<len; ){
+    while(int j=0; j<len; i++){
         if B[col][j]
     }
 }
