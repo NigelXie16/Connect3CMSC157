@@ -81,7 +81,7 @@ class Board {
         // check if four in a row horizontally, vertically, or diagonally
         for (int i = 0; i < this.getSize(); i++) {
             for (int j = 0; j < this.getSize(); j++) {
-                if (this.B[i][j] != null && this.B[i+1][j] != null && this.B[i][j+1] != null && this.B[i+2][j] != null && this.B[i][j+2] != null && this.B[i+3][j] != null && this.B[i][j+3] != null ) {
+                if (this.B[i][j] != null && this.B[i+1][j] != null && this.B[i][j+1] != null && this.B[i+2][j] != null && this.B[i][j+2] != null && this.B[i+3][j] != null && this.B[i][j+3] != null && this.B[i+4][j]!=null&&this.B[i][j+4]!=null) {
                     if (i + 3 < this.getSize() && this.B[i][j].player == this.B[i + 1][j].player
                             && this.B[i][j].player == this.B[i + 2][j].player
                             && this.B[i][j].player == this.B[i + 3][j].player) {
