@@ -68,7 +68,7 @@ class Board {
     public void add(Piece P, int col)
     // add piece to a column
     {
-        int j = -col;
+        int j = 0;
         while (B[col][j] != null) {
             j++;
         }
@@ -81,7 +81,7 @@ class Board {
         System.out.println(b.toString());
         Piece p = new Piece('x');
         Piece p1 = new Piece('x');
-        b.add(p, 0);
+        b.add(p, 1);
         b.add(p1, 0);
         System.out.println(b.toString());
     }
