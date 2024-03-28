@@ -87,26 +87,33 @@ class Board {
                         && this.B[i + 3][j + 3] != null && this.B[i + 4][j + 4] != null
                         && this.B[i][j] != null && this.B[i + 1][j - 1] != null && this.B[i + 2][j - 2] != null
                         && this.B[i + 3][j - 3] != null && this.B[i + 4][j - 4] != null){
-                    if (i + 3 < this.getSize() && this.B[i][j].player == this.B[i + 1][j].player
+                    if (i + 3 < this.getSize()
+                            && this.B[i][j].player == this.B[i + 1][j].player
                             && this.B[i][j].player == this.B[i + 2][j].player
-                            && this.B[i][j].player == this.B[i + 3][j].player) {
+                            && this.B[i][j].player == this.B[i + 3][j].player
+                            && this.B[i][j].player == this.B[i + 4][j].player
+                             ) {
                         return this.B[i][j].player;
                     }
-                    if (j + 3 < this.getSize() && this.B[i][j].player == this.B[i][j + 1].player
+                    if (j + 3 < this.getSize() 
+                            && this.B[i][j].player == this.B[i][j + 1].player
                             && this.B[i][j].player == this.B[i][j + 2].player
-                            && this.B[i][j].player == this.B[i][j + 3].player) {
+                            && this.B[i][j].player == this.B[i][j + 3].player
+                            && this.B[i][j].player == this.B[i][j + 4].player) {
                         return this.B[i][j].player;
                     }
                     if (i + 3 < this.getSize() && j + 3 < this.getSize()
                             && this.B[i][j].player == this.B[i + 1][j + 1].player
                             && this.B[i][j].player == this.B[i + 2][j + 2].player
-                            && this.B[i][j].player == this.B[i + 3][j + 3].player) {
+                            && this.B[i][j].player == this.B[i + 3][j + 3].player
+                            && this.B[i][j].player == this.B[i + 4][j + 4].player) {
                         return this.B[i][j].player;
                     }
                     if (i + 3 < this.getSize() && j - 3 >= 0
                             && this.B[i][j].player == this.B[i + 1][j - 1].player
                             && this.B[i][j].player == this.B[i + 2][j - 2].player
-                            && this.B[i][j].player == this.B[i + 3][j - 3].player) {
+                            && this.B[i][j].player == this.B[i + 3][j - 3].player
+                            && this.B[i][j].player == this.B[i + 4][j - 4].player) {
                         return this.B[i][j].player;
                     }
                 }
