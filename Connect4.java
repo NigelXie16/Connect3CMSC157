@@ -1,12 +1,12 @@
 /*
- * Constructors:
- * Connect4()
- * Connect4(size)
- * Methods:
- * winner()
- * toString()
- * gameOver()
- * move(player,column)
+ * Connect4 Class
+ * Connect4(): make a Connect4 game of default size
+ * Connect4(size): make a game of specified size
+ * winner(): Return the player (or none) who wins at this time
+ * toString(): print out the game board to the terminal
+ * gameOver(): Is the game over (there must be a winner, or no winner is possible)
+ * move(player,column): The player would like to put a Piece in the column, thereby making a move.  Probably communicates with Board.
+ * 
  */
 public class Connect4 {
     private Board board;
@@ -19,7 +19,7 @@ public class Connect4 {
         this.board = new Board(size);
     }
 
-    public boolean winner() {
+    public char winner() {
         // Implement logic to check if there's a winner
         // check if four in a row horizontally, vertically, or diagonally
         for (int i = 0; i < board.getSize(); i++) {
@@ -28,29 +28,29 @@ public class Connect4 {
                     if (i + 3 < board.getSize() && board.B[i][j].player == board.B[i + 1][j].player
                             && board.B[i][j].player == board.B[i + 2][j].player
                             && board.B[i][j].player == board.B[i + 3][j].player) {
-                        return true;
+                        return board.B[i][j].player;
                     }
                     if (j + 3 < board.getSize() && board.B[i][j].player == board.B[i][j + 1].player
                             && board.B[i][j].player == board.B[i][j + 2].player
                             && board.B[i][j].player == board.B[i][j + 3].player) {
-                        return true;
+                        return board.B[i][j].player;
                     }
                     if (i + 3 < board.getSize() && j + 3 < board.getSize()
                             && board.B[i][j].player == board.B[i + 1][j + 1].player
                             && board.B[i][j].player == board.B[i + 2][j + 2].player
                             && board.B[i][j].player == board.B[i + 3][j + 3].player) {
-                        return true;
+                        return board.B[i][j].player;
                     }
                     if (i + 3 < board.getSize() && j - 3 >= 0
                             && board.B[i][j].player == board.B[i + 1][j - 1].player
                             && board.B[i][j].player == board.B[i + 2][j - 2].player
                             && board.B[i][j].player == board.B[i + 3][j - 3].player) {
-                        return true;
+                        return board.B[i][j].player;
                     }
                 }
             }
         }
-        return false;
+        return 'N';
     }
 
     @Override
