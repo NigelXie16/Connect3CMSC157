@@ -20,37 +20,7 @@ public class Connect4 {
     }
 
     public char winner() {
-        // Implement logic to check if there's a winner
-        // check if four in a row horizontally, vertically, or diagonally
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j < board.getSize(); j++) {
-                if (board.B[i][j] != null) {
-                    if (i + 3 < board.getSize() && board.B[i][j].player == board.B[i + 1][j].player
-                            && board.B[i][j].player == board.B[i + 2][j].player
-                            && board.B[i][j].player == board.B[i + 3][j].player) {
-                        return board.B[i][j].player;
-                    }
-                    if (j + 3 < board.getSize() && board.B[i][j].player == board.B[i][j + 1].player
-                            && board.B[i][j].player == board.B[i][j + 2].player
-                            && board.B[i][j].player == board.B[i][j + 3].player) {
-                        return board.B[i][j].player;
-                    }
-                    if (i + 3 < board.getSize() && j + 3 < board.getSize()
-                            && board.B[i][j].player == board.B[i + 1][j + 1].player
-                            && board.B[i][j].player == board.B[i + 2][j + 2].player
-                            && board.B[i][j].player == board.B[i + 3][j + 3].player) {
-                        return board.B[i][j].player;
-                    }
-                    if (i + 3 < board.getSize() && j - 3 >= 0
-                            && board.B[i][j].player == board.B[i + 1][j - 1].player
-                            && board.B[i][j].player == board.B[i + 2][j - 2].player
-                            && board.B[i][j].player == board.B[i + 3][j - 3].player) {
-                        return board.B[i][j].player;
-                    }
-                }
-            }
-        }
-        return 'N';
+        
     }
 
     @Override
