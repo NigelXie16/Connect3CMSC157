@@ -71,19 +71,19 @@ Enter at column 0-4: 0
 
 You will have to determine additional methods as we go along.  Obviously, documenting your work is essential since all of us are working on one application!
 
-# Connect4 Class: the roles of the game
+# Connect4 Class
 
-Connect4()
+Connect4(): make a Connect4 game of default size
 
-Connect4(size)
+Connect4(size): make a game of specified size
 
-winner()
+winner(): Return the player (or none) who wins at this time
 
-toString()
+toString(): not sure??
 
-gameOver()
+gameOver(): Is the game over (there must be a winner, or no winner is possible)
 
-move(player,column)
+move(player,column): The player would like to put a Piece in the column, thereby making a move.  Probably communicates with Board.
 
 # Getting Started
 
