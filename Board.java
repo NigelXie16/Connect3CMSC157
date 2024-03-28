@@ -53,7 +53,7 @@ class Board {
         }
         s += "\n";
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j <= len; j++) {
+            for (int j = 0; j <= len; j++) { // XX causes exception
                 if (B[j][i] == null) {
                     s += "| ";
                 } else {
@@ -75,16 +75,15 @@ class Board {
         B[col][j] = P;
     }
 
-public static void main(String[] args)
-{
-    //test the class
-    Board b=new Board();
-    System.out.println(b.toString());
-    Piece p=new Piece('x');
-    Piece p1=new Piece('x');
-    b.add(p, 0);
-    b.add(p1, 0);
-    System.out.println(b.toString());
-}
+    public static void main(String[] args) {
+        // test the class
+        Board b = new Board();
+        System.out.println(b.toString());
+        Piece p = new Piece('x');
+        Piece p1 = new Piece('x');
+        b.add(p, 0);
+        b.add(p1, 0);
+        System.out.println(b.toString());
+    }
 
 }
