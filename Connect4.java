@@ -67,7 +67,7 @@ public class Connect4 {
                 }
             }
         }
-        if (winner()) {
+        if (winner()== 'N') {
             return false;
         }
         return true;
