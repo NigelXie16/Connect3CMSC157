@@ -53,7 +53,7 @@ class Board {
         }
         s += "\n";
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j <= len; j++) { // XX causes exception
+            for (int j = 0; j < len; j++) { // XX causes exception
                 if (B[j][i] == null) {
                     s += "| ";
                 } else {
