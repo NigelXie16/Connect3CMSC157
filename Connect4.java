@@ -91,7 +91,6 @@ public class Connect4 {
         game.move(2, 1);
         game.move(1, 0);
         game.move(2, 1);
-        game.move(1, 0);
         game.move(2, 1);
         System.out.println(game);
         System.out.println(game.winner());

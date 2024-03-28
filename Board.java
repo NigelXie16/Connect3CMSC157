@@ -31,14 +31,14 @@ class Board {
     }
 
     public int getSize()
-    // return board size
+    // return this size
     {
         return len;
     }
 
     public String toString()
     /*
-     * return the board String to visible set of columns, like this
+     * return the this String to visible set of columns, like this
      * 0 1 2 3 4
      * | | | | | |
      * | | | | | |
@@ -73,6 +73,41 @@ class Board {
             j++;
         }
         B[col][j] = P;
+    }
+
+    public char winner()
+    {
+        // Implement logic to check if there's a winner
+        // check if four in a row horizontally, vertically, or diagonally
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
+                if (this.B[i][j] != null) {
+                    if (i + 3 < this.getSize() && this.B[i][j].player == this.B[i + 1][j].player
+                            && this.B[i][j].player == this.B[i + 2][j].player
+                            && this.B[i][j].player == this.B[i + 3][j].player) {
+                        return this.B[i][j].player;
+                    }
+                    if (j + 3 < this.getSize() && this.B[i][j].player == this.B[i][j + 1].player
+                            && this.B[i][j].player == this.B[i][j + 2].player
+                            && this.B[i][j].player == this.B[i][j + 3].player) {
+                        return this.B[i][j].player;
+                    }
+                    if (i + 3 < this.getSize() && j + 3 < this.getSize()
+                            && this.B[i][j].player == this.B[i + 1][j + 1].player
+                            && this.B[i][j].player == this.B[i + 2][j + 2].player
+                            && this.B[i][j].player == this.B[i + 3][j + 3].player) {
+                        return this.B[i][j].player;
+                    }
+                    if (i + 3 < this.getSize() && j - 3 >= 0
+                            && this.B[i][j].player == this.B[i + 1][j - 1].player
+                            && this.B[i][j].player == this.B[i + 2][j - 2].player
+                            && this.B[i][j].player == this.B[i + 3][j - 3].player) {
+                        return this.B[i][j].player;
+                    }
+                }
+            }
+        }
+        return 'N';
     }
 
     public static void main(String[] args) {
