@@ -80,22 +80,22 @@ class Board {
         // check if four in a row horizontally, vertically, or diagonally
         for (int i = 0; i < this.getSize(); i++) {
             for (int j = 0; j < this.getSize(); j++) {
+                // XX comment this: what does it do?
                 if (this.B[i][j] != null && this.B[i + 1][j] != null && this.B[i][j + 1] != null
                         && this.B[i + 2][j] != null && this.B[i][j + 2] != null && this.B[i + 3][j] != null
                         && this.B[i][j + 3] != null && this.B[i + 4][j] != null && this.B[i][j + 4] != null
                         && this.B[i + 1][j + 1] != null && this.B[i + 2][j + 2] != null
                         && this.B[i + 3][j + 3] != null && this.B[i + 4][j + 4] != null
                         && this.B[i][j] != null && this.B[i + 1][j - 1] != null && this.B[i + 2][j - 2] != null
-                        && this.B[i + 3][j - 3] != null && this.B[i + 4][j - 4] != null){
-                    if (i + 3 < this.getSize()
+                        && this.B[i + 3][j - 3] != null && this.B[i + 4][j - 4] != null) {
+                    if (i + 3 < this.getSize() // XX comment this: what does it do?
                             && this.B[i][j].player == this.B[i + 1][j].player
                             && this.B[i][j].player == this.B[i + 2][j].player
                             && this.B[i][j].player == this.B[i + 3][j].player
-                            && this.B[i][j].player == this.B[i + 4][j].player
-                             ) {
+                            && this.B[i][j].player == this.B[i + 4][j].player) {
                         return this.B[i][j].player;
                     }
-                    if (j + 3 < this.getSize() 
+                    if (j + 3 < this.getSize()
                             && this.B[i][j].player == this.B[i][j + 1].player
                             && this.B[i][j].player == this.B[i][j + 2].player
                             && this.B[i][j].player == this.B[i][j + 3].player
