@@ -44,6 +44,9 @@ To get you started, here are the initial methods I created along with their para
 Before your group starts on the GUI, it should now determine the interface details of every method in TokenVisualization.
  
 */
+
+import java.awt.*;
+
 public class BoardVis extends Rectangle {
     public static final Color CLEAR = Color.BLACK;
     private Color color; // color of board
