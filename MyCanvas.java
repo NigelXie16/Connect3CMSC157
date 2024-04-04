@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.util.*;
 
 
-class MyCanvas2 extends JPanel implements ActionListener{
+class MyCanvas extends JPanel implements ActionListener{
 	// int ix;
 	// int iy;
 	private BoardVis boardvis;//visualize the board
@@ -12,7 +12,7 @@ class MyCanvas2 extends JPanel implements ActionListener{
 	public static int TOKENHIEGHT = 50;
 
 
-	public MyCanvas2(int w, int h){
+	public MyCanvas(int w, int h){
 		//set the canavas size
 		tokens = new ArrayList<TokenVis>();
 		setPreferredSize(new Dimension(w,h));
@@ -41,7 +41,7 @@ class MyCanvas2 extends JPanel implements ActionListener{
 		// g.fillRect(100, 200, 90, 120);
 	}
 
-	public void addToken(int x, int y){
+	public void drawPoint(int x, int y){
 		this.TOKENWIDTH=x;
 		this.TOKENHIEGHT=y;
 		repaint();
@@ -53,7 +53,7 @@ class MyCanvas2 extends JPanel implements ActionListener{
         
         //when we close the window stop the app
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyCanvas2 canvas = new MyCanvas2( 600, 300);
+        MyCanvas canvas = new MyCanvas( 600, 300);
          window.add(canvas);
 
         //fit the window around the compents (just our canvas)
