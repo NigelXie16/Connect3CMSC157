@@ -20,7 +20,7 @@ public class Connect4 {
     }
 
     public char winner() {
-        
+
     }
 
     @Override
@@ -28,6 +28,8 @@ public class Connect4 {
         return this.board.toString();
     }
 
+    // XX I think this should be in Board class, since it looks at details of
+    // the array that belongs to it.
     public boolean gameOver() {
         // Implement logic to check if the game is over
         for (int i = 0; i < board.getSize(); i++) {
@@ -37,7 +39,7 @@ public class Connect4 {
                 }
             }
         }
-        if (winner()== 'N') {
+        if (winner() == 'N') { // XX compare to a constant, not a literal
             return false;
         }
         return true;
@@ -54,7 +56,7 @@ public class Connect4 {
 
     public static void main(String[] args) {
         Connect4 game = new Connect4(5);
-        System.out.println(game);
+        System.out.println(game); // XX ok, need to add code that gets moves from the user.
         game.move(1, 0);
         game.move(2, 1);
         game.move(1, 0);

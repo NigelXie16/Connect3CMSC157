@@ -1,4 +1,14 @@
+import java.util.Scanner;
+
 public class Game {
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.start();
+        scanner.close(); // Close the scanner when the program exits
+    }
+
     private Connect4 connect4;
 
     public Game() {
@@ -7,7 +17,6 @@ public class Game {
 
     public void start() {
         System.out.println("Starting Connect4 Game...");
-        Scanner scanner = new Scanner(System.in);
 
         while (!connect4.gameOver()) {
             System.out.println(connect4);
@@ -32,10 +41,5 @@ public class Game {
         } else {
             System.out.println("Player " + winner + " wins!");
         }
-    }
-
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.start();
     }
 }
