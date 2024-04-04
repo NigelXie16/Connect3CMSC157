@@ -20,7 +20,14 @@ public class Connect4 {
     }
 
     public char winner() {
-
+//we need check horizontally
+        
+//we need to check veritcally 
+        
+//diagonal check 
+        
+// diagonal check 
+        
     }
 
     @Override
