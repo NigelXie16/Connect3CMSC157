@@ -3,20 +3,24 @@ import javax.swing.*;
 import java.util.*;
 
 
+class MyCanvas2 extends JPanel implements ActionListener{
+	// int ix;
+	// int iy;
+	private BoardVis boardvis;//visualize the board
+	private ArrayList<TokenVis> tokens; //list of tokens
+	public static int TOKENWIDTH = 50;
+	public static int TOKENHIEGHT = 50;
 
-//public class MyCanvas extends JPanel{
 
-class MyCanvas extends JPanel{
-	int ix;
-	int iy;
-	
-	public MyCanvas(int sizeWidth, int sizeHeight){
+	public MyCanvas2(int w, int h){
 		//set the canavas size
-
-		setPreferredSize(new Dimension(sizeWidth,sizeHeight));
+		tokens = new ArrayList<TokenVis>();
+		setPreferredSize(new Dimension(w,h));
 		//setting our background with a method that belong to out parent class
-		setBackground(Color.white);
+		setBackground(Color.pink);
 		//this.rand = new Random();
+		int padding = 50;
+		boardvis = new Boardvis(----);
 
 	}
 
@@ -25,9 +29,12 @@ class MyCanvas extends JPanel{
 	public void paintComponent(Graphics g){
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
-		g.setColor(Color.red);
-		g.fillOval(this.ix, this.iy,3,3);
-
+		//g.setColor(Color.red);
+		boardvis.draw(g);
+		//g.fillOval(this.ix, this.iy,3,3);
+		for(Tokenvis t : this.tokens){
+			t.draw(g);
+		}
 
 		//works
 		// g.setColor(Color.red);
@@ -35,8 +42,8 @@ class MyCanvas extends JPanel{
 	}
 
 	public void drawPoint(int x, int y){
-		this.ix=x;
-		this.iy=y;
+		this.TOKENWIDTH=x;
+		this.TOKENHIEGHT=y;
 		repaint();
 	}
 
@@ -46,7 +53,7 @@ class MyCanvas extends JPanel{
         
         //when we close the window stop the app
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MyCanvas canvas = new MyCanvas( 600, 300);
+        MyCanvas2 canvas = new MyCanvas2( 600, 300);
          window.add(canvas);
 
         //fit the window around the compents (just our canvas)
@@ -62,7 +69,4 @@ class MyCanvas extends JPanel{
         window.setVisible(true);
         }
 
-
 }
-
-
