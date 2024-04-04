@@ -26,14 +26,14 @@ class MyCanvas extends JPanel implements ActionListener{
 
 	}
 
-	@Override
+	@Override 
 	public void actionPerformed(ActionEvent e){
 		//this is where we will update the position of the tokens
 		//and then call repaint
 		//repaint();
 	}
 
-	@Override//this method replaces something in the parent class
+	@Override //this method replaces something in the parent class
 	public void paintComponent(Graphics g){
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
@@ -47,12 +47,6 @@ class MyCanvas extends JPanel implements ActionListener{
 		//works
 		// g.setColor(Color.red);
 		// g.fillRect(100, 200, 90, 120);
-	}
-
-	public void drawPoint(int x, int y){
-		this.TOKENWIDTH=x;
-		this.TOKENHIEGHT=y;
-		repaint();
 	}
 
 	public static void main( String args[] )
