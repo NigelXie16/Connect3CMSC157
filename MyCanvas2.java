@@ -41,7 +41,7 @@ class MyCanvas2 extends JPanel implements ActionListener{
 		// g.fillRect(100, 200, 90, 120);
 	}
 
-	public void drawPoint(int x, int y){
+	public void addToken(int x, int y){
 		this.TOKENWIDTH=x;
 		this.TOKENHIEGHT=y;
 		repaint();
