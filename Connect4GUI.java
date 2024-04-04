@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -6,17 +7,23 @@ import javax.swing.*;
 public class Connect4GUI{
     // private JLabel statusBar; // status of mouse relative to window (in or out?)
     // private JLabel locationBar; // location of mouse in window, jlabel for display 
-    public static int WIDTH = 675;
-    public static int HEIGHT = 375;
+   private JFrame win;
+    public static int WIDTH = 600;
+    public static int HEIGHT = 700;
     
     MyCanvas canvas;
+
+    // public Connect4GUI(int size){
+    //   //assign size of rows and columns
+    //   Board [][] = new Board [size][size];
+    // }
 
 
     private MouseTracker2 MouseT;
 
-    public SketchPad() {   
+    public Connect4GUI(int size) {   
         //creat a windwo frame and set the title in the toolbar
-        JFrame window = new JFrame("Art");
+        JFrame window = new JFrame("game");
         MyCanvas canvas = new MyCanvas(WIDTH,HEIGHT);
         
         //when we close the window stop the app
@@ -47,7 +54,7 @@ public class Connect4GUI{
     }
       public static void main( String args[] )
         { 
-        SketchPad sketch = new SketchPad();
+        Connect4GUI gui = new Connect4GUI(4);//constructor takes in input
         }
 
 
