@@ -50,7 +50,7 @@ public class Connect4GUI {
     Connect4GUI gui = new Connect4GUI(4);// constructor takes in input
   }
 
-
+  /** @return the size of the board */
   public int getSize() {
     return this.size;
   }
