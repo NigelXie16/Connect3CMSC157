@@ -44,13 +44,13 @@ To get you started, here are the initial methods I created along with their para
 Before your group starts on the GUI, it should now determine the interface details of every method in TokenVisualization.
  
 */
-public class BoardVisualization extends Rectangle {
+public class BoardVis extends Rectangle {
     public static final Color CLEAR = Color.BLACK;
     private Color color; // color of board
     private int tokensize;
     private int n; // number of rows/cols
 
-    public BoardVisualization(int x, int y, int width, int height, Color color, int tokensize, int n) {
+    public BoardVis(int x, int y, int width, int height, Color color, int tokensize, int n) {
         super(x, y, width, height);
         this.color = color;
         this.tokensize = tokensize;
