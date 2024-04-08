@@ -21,3 +21,11 @@ At this point I would expect your non-graphics game to work, so clearly there is
 
 Added some comments, marked 'XX' to your code.
 
+# 4/8/24
+
+Your work on the GUI interface is very good--just what was called for!
+
+I fixed a minor char return to get Connect4 to compile.  It works, but lacks a main loop you might use for testing.  Add that interaction so you can test it!
+
+Board has a method to find winner, but it needs to be generalized and tested thoroughly.  Check it out.
+

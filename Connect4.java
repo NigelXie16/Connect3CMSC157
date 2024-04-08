@@ -20,7 +20,7 @@ public class Connect4 {
     }
 
     public char winner() {
-        
+        return ' ';// XX i added to get it to compile
     }
 
     @Override

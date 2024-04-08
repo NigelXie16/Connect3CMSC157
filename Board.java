@@ -81,6 +81,8 @@ class Board {
         for (int i = 0; i < this.getSize(); i++) {
             for (int j = 0; j < this.getSize(); j++) {
                 // XX comment this: what does it do?
+                // Try to make something more general than this. For example,
+                // you might want to have a method that checks row/col/diagnonal separately.
                 if (this.B[i][j] != null && this.B[i + 1][j] != null && this.B[i][j + 1] != null
                         && this.B[i + 2][j] != null && this.B[i][j + 2] != null && this.B[i + 3][j] != null
                         && this.B[i][j + 3] != null && this.B[i + 4][j] != null && this.B[i][j + 4] != null
