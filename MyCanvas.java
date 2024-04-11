@@ -23,7 +23,11 @@ class MyCanvas extends JPanel implements KeyListener{
 		ix = padding;
 		iy = padding;
 		boardvis = new BoardVis(ix, iy, w - padding * 2, h - padding * 2, Color.blue, 50, 7);
+		this.setFocusable(true);
+		this.requestFocus();
+		this.addKeyListener(this);
 
+		
 	}
 
 	@Override 
@@ -33,9 +37,9 @@ class MyCanvas extends JPanel implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-		System.out.println("keyPressed");
-        //System.out.println("keyPressed");
-		if((e.getKeyCode()==KeyEvent.VK_0)){
+		//System.out.println("keyPressed");
+		if (e.getKeyCode() == KeyEvent.VK_0) {
+			System.out.println("0 keyPressed");
 			//if the key is pressed drop token in column 
 		}
     }
@@ -69,7 +73,6 @@ class MyCanvas extends JPanel implements KeyListener{
         MyCanvas canvas = new MyCanvas( 600, 600);
 		//when we close the window stop the app
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		canvas.addKeyListener(canvas);
 		window.add(canvas);
 		// canvas.addKeyMotionListener(MouseT);
         //fit the window around the compents (just our canvas)
