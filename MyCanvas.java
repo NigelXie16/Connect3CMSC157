@@ -33,7 +33,11 @@ class MyCanvas extends JPanel implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+		System.out.println("keyPressed");
         //System.out.println("keyPressed");
+		if((e.getKeyCode()==KeyEvent.VK_0)){
+			//if the key is pressed drop token in column 
+		}
     }
 
     @Override
@@ -43,7 +47,6 @@ class MyCanvas extends JPanel implements KeyListener{
 
 	@Override //this method replaces something in the parent class
 	public void paintComponent(Graphics g){
-
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
 		g.setColor(Color.red);
@@ -62,13 +65,13 @@ class MyCanvas extends JPanel implements KeyListener{
 
 	public static void main( String args[] )
         { 
-        JFrame window = new JFrame("Art");
-        
-        //when we close the window stop the app
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame window = new JFrame("Connect 4 ;)");
         MyCanvas canvas = new MyCanvas( 600, 600);
-         window.add(canvas);
-
+		//when we close the window stop the app
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		canvas.addKeyListener(canvas);
+		window.add(canvas);
+		// canvas.addKeyMotionListener(MouseT);
         //fit the window around the compents (just our canvas)
         window.pack();
 
