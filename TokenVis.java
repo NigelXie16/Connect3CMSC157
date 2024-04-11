@@ -3,13 +3,20 @@ import java.awt.*;
 public class TokenVis extends Rectangle {
     private Color color;
 
-    // XX constructor is a good idea
     /**
-     * this is the constructor of the TokenVis, parameter expecting
-     * public TokenVis(int x0, int y0, int w, int h) {
-     * super(x0, y0, w, h);
-     * }
-     * /** we will draw the token here
+     * constructor for TokenVis
+     * @param x0
+     * @param y0
+     * @param w
+     * @param h
+     */
+    public TokenVis(int x0, int y0, int w, int h) {
+        super(x0, y0, w, h);
+    }
+    
+    /**
+     * draw the token
+     * @param g
      */
     public void draw(Graphics g) {
         g.setColor(color);
