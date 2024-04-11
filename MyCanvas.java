@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.*;
 
 
-class MyCanvas extends JPanel implements ActionListener{
+class MyCanvas extends JPanel implements KeyListener{
 	int ix;
 	int iy;
 	private BoardVis boardvis; // visualizing the board
@@ -27,20 +27,32 @@ class MyCanvas extends JPanel implements ActionListener{
 	}
 
 	@Override 
-	public void actionPerformed(ActionEvent e){
-		//this is where we will update the position of the tokens
-		//and then call repaint
-		//repaint();
+	public void keyTyped(KeyEvent e){
+		//System.out.println("keyTyped");
 	}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        //System.out.println("keyPressed");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        //System.out.println("keyReleased");
+    }
 
 	@Override //this method replaces something in the parent class
 	public void paintComponent(Graphics g){
 
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
-
 		g.setColor(Color.red);
 		boardvis.draw(g);
+
+        //test the TokenVis class
+        TokenVis token1 = new TokenVis(100, 100, TOKENWIDTH, TOKENHIEGHT);
+        token1.setColor(Color.red);
+        token1.draw(g);
 
 		g.fillOval(this.ix, this.iy,3,3);
 		for(TokenVis t : this.tokens){

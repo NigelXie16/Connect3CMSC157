@@ -149,14 +149,19 @@ class Board {
     }
 
     public static void main(String[] args) {
-        // test the class
+        // test the class, create and add pieces to the board, also test the winner method
         Board b = new Board();
         System.out.println(b.toString());
         Piece p = new Piece('x');
         Piece p1 = new Piece('x');
-        b.add(p, 1);
-        b.add(p1, 0);
+        Piece p2 = new Piece('x');
+        Piece p3 = new Piece('x');
+        b.add(p, 0);
+        b.add(p1, 1);
+        b.add(p2, 2);
+        b.add(p3, 3);
         System.out.println(b.toString());
+        System.out.println(b.winner());
     }
 
 }
