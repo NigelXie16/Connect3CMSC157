@@ -7,8 +7,8 @@ import java.util.*;
 class MyCanvas extends JPanel implements ActionListener{
 	int ix;
 	int iy;
-	private BoardVis boardvis;//visualize the board
-	private ArrayList<TokenVis> tokens; //list of tokens
+	private BoardVis boardvis; // visualizing the board
+	private ArrayList<TokenVis> tokens; // array storing the tokens
 	public static int TOKENWIDTH = 50;
 	public static int TOKENHIEGHT = 50;
 
@@ -35,18 +35,17 @@ class MyCanvas extends JPanel implements ActionListener{
 
 	@Override //this method replaces something in the parent class
 	public void paintComponent(Graphics g){
+
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
-		//g.setColor(Color.red);
+
+		g.setColor(Color.red);
 		boardvis.draw(g);
-		//g.fillOval(this.ix, this.iy,3,3);
+
+		g.fillOval(this.ix, this.iy,3,3);
 		for(TokenVis t : this.tokens){
 			t.draw(g);
 		}
-
-		//works
-		// g.setColor(Color.red);
-		// g.fillRect(100, 200, 90, 120);
 	}
 
 	public static void main( String args[] )

@@ -18,9 +18,13 @@ class Board {
         }
     }
 
-    public Board(int col)
-    // constructor
-    {
+    /**
+     * Constructor with column
+     * i is the row, j is the column
+     * 
+     * @param col
+     */
+    public Board(int col) {
         this.len = col;
         B = new Piece[len][len];
         for (int i = 0; i < len; i++) {
@@ -75,52 +79,72 @@ class Board {
         B[col][j] = P;
     }
 
+    /**
+     * Return the winner of the game, in char
+     * 
+     * @return
+     */
     public char winner() {
         // Implement logic to check if there's a winner
         // check if four in a row horizontally, vertically, or diagonally
+
+        // check horizontally
         for (int i = 0; i < this.getSize(); i++) {
             for (int j = 0; j < this.getSize(); j++) {
-                // XX comment this: what does it do?
-                // Try to make something more general than this. For example,
-                // you might want to have a method that checks row/col/diagnonal separately.
-                if (this.B[i][j] != null && this.B[i + 1][j] != null && this.B[i][j + 1] != null
-                        && this.B[i + 2][j] != null && this.B[i][j + 2] != null && this.B[i + 3][j] != null
-                        && this.B[i][j + 3] != null && this.B[i + 4][j] != null && this.B[i][j + 4] != null
-                        && this.B[i + 1][j + 1] != null && this.B[i + 2][j + 2] != null
-                        && this.B[i + 3][j + 3] != null && this.B[i + 4][j + 4] != null
-                        && this.B[i][j] != null && this.B[i + 1][j - 1] != null && this.B[i + 2][j - 2] != null
-                        && this.B[i + 3][j - 3] != null && this.B[i + 4][j - 4] != null) {
-                    if (i + 3 < this.getSize() // XX comment this: what does it do?
-                            && this.B[i][j].player == this.B[i + 1][j].player
-                            && this.B[i][j].player == this.B[i + 2][j].player
-                            && this.B[i][j].player == this.B[i + 3][j].player
-                            && this.B[i][j].player == this.B[i + 4][j].player) {
-                        return this.B[i][j].player;
-                    }
-                    if (j + 3 < this.getSize()
-                            && this.B[i][j].player == this.B[i][j + 1].player
-                            && this.B[i][j].player == this.B[i][j + 2].player
-                            && this.B[i][j].player == this.B[i][j + 3].player
-                            && this.B[i][j].player == this.B[i][j + 4].player) {
-                        return this.B[i][j].player;
-                    }
-                    if (i + 3 < this.getSize() && j + 3 < this.getSize()
-                            && this.B[i][j].player == this.B[i + 1][j + 1].player
-                            && this.B[i][j].player == this.B[i + 2][j + 2].player
-                            && this.B[i][j].player == this.B[i + 3][j + 3].player
-                            && this.B[i][j].player == this.B[i + 4][j + 4].player) {
-                        return this.B[i][j].player;
-                    }
-                    if (i + 3 < this.getSize() && j - 3 >= 0
-                            && this.B[i][j].player == this.B[i + 1][j - 1].player
-                            && this.B[i][j].player == this.B[i + 2][j - 2].player
-                            && this.B[i][j].player == this.B[i + 3][j - 3].player
-                            && this.B[i][j].player == this.B[i + 4][j - 4].player) {
-                        return this.B[i][j].player;
-                    }
+                if (this.B[i][j] != null
+                        && this.B[i + 1][j] != null
+                        && this.B[i + 2][j] != null
+                        && this.B[i + 3][j] != null
+                        && this.B[i][j].player == this.B[i + 1][j].player
+                        && this.B[i][j].player == this.B[i + 2][j].player
+                        && this.B[i][j].player == this.B[i + 3][j].player)
+                    return this.B[i][j].player;
+            }
+        }
+        // check vertically
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
+                if (this.B[i][j] != null
+                        && this.B[i][j + 1] != null
+                        && this.B[i][j + 2] != null
+                        && this.B[i][j + 3] != null
+                        && this.B[i][j].player == this.B[i][j + 1].player
+                        && this.B[i][j].player == this.B[i][j + 2].player
+                        && this.B[i][j].player == this.B[i][j + 3].player) {
+                    return this.B[i][j].player;
                 }
             }
         }
+        // check diagonally
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
+                if (this.B[i][j] != null
+                        && this.B[i + 1][j + 1] != null
+                        && this.B[i + 2][j + 2] != null
+                        && this.B[i + 3][j + 3] != null
+                        && this.B[i][j].player == this.B[i + 1][j + 1].player
+                        && this.B[i][j].player == this.B[i + 2][j + 2].player
+                        && this.B[i][j].player == this.B[i + 3][j + 3].player) {
+                    return this.B[i][j].player;
+                }
+            }
+        }
+        // check diagonally
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
+                if (this.B[i][j] != null
+                        && this.B[i + 1][j - 1] != null
+                        && this.B[i + 2][j - 2] != null
+                        && this.B[i + 3][j - 3] != null
+                        && this.B[i][j].player == this.B[i + 1][j - 1].player
+                        && this.B[i][j].player == this.B[i + 2][j - 2].player
+                        && this.B[i][j].player == this.B[i + 3][j - 3].player ) {
+                    return this.B[i][j].player;
+                }
+            }
+
+        }
+
         return 'N';
     }
 
