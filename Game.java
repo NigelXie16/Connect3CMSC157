@@ -6,6 +6,8 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
         game.start();
+        // XX awkward to open the scanner one place and close it another.
+        // You might put the scanner etc all in main or all in a game object.
         scanner.close(); // Close the scanner when the program exits
     }
 
