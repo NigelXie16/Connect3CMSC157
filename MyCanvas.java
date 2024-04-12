@@ -23,7 +23,8 @@ class MyCanvas extends JPanel implements KeyListener{
 		ix = padding;
 		iy = padding;
 		boardvis = new BoardVis(ix, iy, w - padding * 2, h - padding * 2, Color.blue, 50, 7);
-		this.setFocusable(true);
+		
+        this.setFocusable(true);
 		this.requestFocus();
 		this.addKeyListener(this);
 
@@ -32,21 +33,21 @@ class MyCanvas extends JPanel implements KeyListener{
 
 	@Override 
 	public void keyTyped(KeyEvent e){
-		//System.out.println("keyTyped");
+		System.out.println("keyTyped");
 	}
 
     @Override
     public void keyPressed(KeyEvent e) {
-		//System.out.println("keyPressed");
-		if (e.getKeyCode() == KeyEvent.VK_0) {
+		System.out.println("keyPressed"); //testing case
+		if (e.getKeyCode() == KeyEvent.VK_0) { //if the key pressed is 0 the number key
 			System.out.println("0 keyPressed");
-			//if the key is pressed drop token in column 
+			//drop token in column 
 		}
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        //System.out.println("keyReleased");
+        System.out.println("keyReleased");
     }
 
 	@Override //this method replaces something in the parent class
