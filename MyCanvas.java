@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.*;
 
 
-class MyCanvas extends JPanel implements ActionListener{
+class MyCanvas extends JPanel implements KeyListener{
 	int ix;
 	int iy;
 	private BoardVis boardvis; // visualizing the board
@@ -23,24 +23,44 @@ class MyCanvas extends JPanel implements ActionListener{
 		ix = padding;
 		iy = padding;
 		boardvis = new BoardVis(ix, iy, w - padding * 2, h - padding * 2, Color.blue, 50, 7);
+		
+        this.setFocusable(true);
+		this.requestFocus();
+		this.addKeyListener(this);
 
+		
 	}
 
 	@Override 
-	public void actionPerformed(ActionEvent e){
-		//this is where we will update the position of the tokens
-		//and then call repaint
-		//repaint();
+	public void keyTyped(KeyEvent e){
+		System.out.println("keyTyped");
 	}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+		System.out.println("keyPressed"); //testing case
+		if (e.getKeyCode() == KeyEvent.VK_0) { //if the key pressed is 0 the number key
+			System.out.println("0 keyPressed");
+			//drop token in column 
+		}
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("keyReleased");
+    }
 
 	@Override //this method replaces something in the parent class
 	public void paintComponent(Graphics g){
-
 		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
-
 		g.setColor(Color.red);
 		boardvis.draw(g);
+
+        //test the TokenVis class
+        TokenVis token1 = new TokenVis(100, 100, TOKENWIDTH, TOKENHIEGHT);
+        token1.setColor(Color.red);
+        token1.draw(g);
 
 		g.fillOval(this.ix, this.iy,3,3);
 		for(TokenVis t : this.tokens){
@@ -50,13 +70,12 @@ class MyCanvas extends JPanel implements ActionListener{
 
 	public static void main( String args[] )
         { 
-        JFrame window = new JFrame("Art");
-        
-        //when we close the window stop the app
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame window = new JFrame("Connect 4 ;)");
         MyCanvas canvas = new MyCanvas( 600, 600);
-         window.add(canvas);
-
+		//when we close the window stop the app
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.add(canvas);
+		// canvas.addKeyMotionListener(MouseT);
         //fit the window around the compents (just our canvas)
         window.pack();
 
