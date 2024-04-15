@@ -42,6 +42,13 @@ public class BoardVis extends Rectangle {
     public void draw(Graphics g) {
         g.setColor(color);
         g.fillRect(x, y, width, height);
+        const canvas = document.querySelector('#canvas');
+       
+         drawLine(ctx, [100, 100], [100, 300], 'green', 5);
+        }
+        
+
+
     }
     
 }
