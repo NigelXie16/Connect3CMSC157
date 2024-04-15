@@ -16,6 +16,7 @@ public class BoardVis extends Rectangle {
         this.color = color;
         this.tokensize = tokensize;
         this.n = n;
+
     }
 
   /** @return minimum X value of the board */
@@ -38,17 +39,27 @@ public class BoardVis extends Rectangle {
         return y + height;
     }
 
-/** draw a blue or colored rectangle in center of canvas, draw any tokens that are in the board */
     public void draw(Graphics g) {
+        // Draw the colored rectangle representing the board
         g.setColor(color);
         g.fillRect(x, y, width, height);
-        const canvas = document.querySelector('#canvas');
-       
-         drawLine(ctx, [100, 100], [100, 300], 'green', 5);
+
+        // Draw grid lines
+        g.setColor(Color.LIGHT_GRAY); // Set grid line color
+
+        // Calculate spacing between grid lines based on board size and number of rows/columns (n)
+        int cellSize = width / n;
+
+        // Draw vertical grid lines
+        for (int i = 0; i <= n; i++) {
+            int xPos = x + i * cellSize;
+            g.drawLine(xPos, y, xPos, y + height);
         }
-        
 
-
+        // Draw horizontal grid lines
+        for (int j = 0; j <= n; j++) {
+            int yPos = y + j * cellSize;
+            g.drawLine(x, yPos, x + width, yPos);
+        }
     }
-    
 }
