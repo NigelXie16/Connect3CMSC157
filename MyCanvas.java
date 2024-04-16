@@ -7,18 +7,15 @@ import java.util.*;
 class MyCanvas extends JPanel implements KeyListener{
 	int ix;
 	int iy;
-	private BoardVis boardvis; // visualizing the board
+	private BoardVis boardvis; 
 	private ArrayList<TokenVis> tokens; // array storing the tokens
 	public static int TOKENWIDTH = 50;
 	public static int TOKENHIEGHT = 50;
 
-	public MyCanvas(int w, int h){
-		//set the canavas size
+	public MyCanvas(int w, int h){ 
 		tokens = new ArrayList<TokenVis>();
 		setPreferredSize(new Dimension(w,h));
-		//setting our background with a method that belong to out parent class
 		setBackground(Color.pink);
-		//this.rand = new Random();
 		int padding = 50;
 		ix = padding;
 		iy = padding;
