@@ -46,12 +46,7 @@ public class Connect4 {
     }
 
     public void move(int player, int column) {
-        // Implement logic to make a move
-        if (player == 1) {
-            board.add(new Piece('X'), column);
-        } else {
-            board.add(new Piece('O'), column);
-        }
+        
     }
 
     public static void main(String[] args) {

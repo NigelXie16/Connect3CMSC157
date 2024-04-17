@@ -90,7 +90,7 @@ class Board {
      * 
      * @return char of the winner
      */
-    public char winner() {
+    public String winner() {
         // check horizontally
         for (int i = 0; i < this.getLength(); i++) {
             for (int j = 0; j < this.getLength(); j++) {
@@ -148,7 +148,7 @@ class Board {
 
         }
 
-        return 'N';
+        return "no winner";
     }
 
     public static void main(String[] args) {
@@ -156,10 +156,10 @@ class Board {
         // method
         Board b = new Board();
         System.out.println(b.toString());
-        Piece p = new Piece('x');
-        Piece p1 = new Piece('x');
-        Piece p2 = new Piece('x');
-        Piece p3 = new Piece('x');
+        Piece p = new Piece("player1");
+        Piece p1 = new Piece("player1");
+        Piece p2 = new Piece("player1");
+        Piece p3 = new Piece("player1");
         b.add(p, 0);
         b.add(p1, 1);
         b.add(p2, 2);
