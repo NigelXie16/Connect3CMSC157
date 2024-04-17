@@ -65,7 +65,7 @@ public class BoardVis extends Rectangle {
 
         // Calculate spacing between grid lines based on board size and number of
         // rows/columns (n)
-        int cellSize = width / (n - 1);
+        int cellSize = width / n;
 
         // Draw vertical grid lines
         for (int i = 0; i <= n; i++) {

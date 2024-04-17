@@ -17,7 +17,7 @@ public class Connect4GUI {
      */
     public Connect4GUI(int size) {
 
-        canvas = new MyCanvas(WIDTH, HEIGHT);
+        //canvas = new MyCanvas(WIDTH, HEIGHT);
         window = new JFrame("game");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);
