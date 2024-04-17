@@ -1,34 +1,47 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Color;
 import javax.swing.*;
 import java.util.*;
 
 
 class MyCanvas extends JPanel implements KeyListener{
-	int ix;
-	int iy;
-	private BoardVis boardvis; 
-	private ArrayList<TokenVis> tokens; // array storing the tokens
+	int ix; // padding on the x axis
+	int iy; // padding on the y axis
+    public static final Color LIGHT_BLUE = new Color(87, 125, 185);
+    public Board board;
+	private BoardVis boardvis; // board visualization
+	private ArrayList<TokenVis> tokens; // storing tokens as TokenVis objects
 	public static int TOKENWIDTH = 50;
 	public static int TOKENHIEGHT = 50;
 
-	public MyCanvas(int w, int h){ 
+    /**
+     * constructor for MyCanvas
+     * NEEED to be changed to pass in a Board object
+     * 
+     * @param w
+     * @param h
+     */
+	public MyCanvas(int w, int h, Board board, int len){ 
 		tokens = new ArrayList<TokenVis>();
+        this.board = board;
+
 		setPreferredSize(new Dimension(w,h));
 		setBackground(Color.pink);
-		int padding = 50;
+
+		int padding = 50; // default padding for the board
 		ix = padding;
 		iy = padding;
-		boardvis = new BoardVis(ix, iy, w - padding * 2, h - padding * 2, Color.blue, 50, 7);
+        // tokensize needs to be calculated based on the size of the board
+		boardvis = new BoardVis(ix, iy, w - padding * 2, h - padding * 2, LIGHT_BLUE, 50, len);
 		
+        // Enable keyboard input
         this.setFocusable(true);
 		this.requestFocus();
 		this.addKeyListener(this);
-
-		
 	}
 
-	@Override 
+    @Override 
 	public void keyTyped(KeyEvent e){
 		System.out.println("keyTyped");
 	}
@@ -47,14 +60,13 @@ class MyCanvas extends JPanel implements KeyListener{
         System.out.println("keyReleased");
     }
 
-	@Override //this method replaces something in the parent class
+	@Override 
 	public void paintComponent(Graphics g){
-		//super allows to still use important code in aprent class but overriding 
 		super.paintComponent(g);
 		g.setColor(Color.red);
 		boardvis.draw(g);
 
-        //test the TokenVis class
+        // test TokenVis class
         TokenVis token1 = new TokenVis(100, 100, TOKENWIDTH, TOKENHIEGHT);
         token1.setColor(Color.red);
         token1.draw(g);
@@ -67,22 +79,14 @@ class MyCanvas extends JPanel implements KeyListener{
 
 	public static void main( String args[] )
         { 
+        // the above testing lines serves the same functions as Connect4GUI, but static
         JFrame window = new JFrame("Connect 4 ;)");
-        MyCanvas canvas = new MyCanvas( 600, 600);
-		//when we close the window stop the app
+        MyCanvas canvas = new MyCanvas(600, 600);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.add(canvas);
-		// canvas.addKeyMotionListener(MouseT);
-        //fit the window around the compents (just our canvas)
         window.pack();
-
-        //dont allow the user to resize the window
         window.setResizable(false);
-
-        //open window in the center of the screen
         window.setLocationRelativeTo(null);
-
-        //display the window
         window.setVisible(true);
         }
 

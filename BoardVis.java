@@ -1,3 +1,4 @@
+
 /**
  * This class is used to draw the board 
 */
@@ -10,7 +11,6 @@ public class BoardVis extends Rectangle {
     private int tokensize;
     private int n; // number of rows/cols
 
-//this is the constructor for BoardVis, it will take in paratmeter
     public BoardVis(int x, int y, int width, int height, Color color, int tokensize, int n) {
         super(x, y, width, height);
         this.color = color;
@@ -19,22 +19,38 @@ public class BoardVis extends Rectangle {
 
     }
 
-  /** @return minimum X value of the board */
+    /**
+     * minimum X value of the board
+     * 
+     * @return
+     */
     public int minX() {
         return x;
     }
 
-/** @return minimum Y value of the board */
+    /**
+     * minimum Y value of the board
+     * 
+     * @return
+     */
     public int minY() {
         return y;
     }
 
-/** @return max X value of the board */
+    /**
+     * max X value of the board
+     * 
+     * @return
+     */
     public int maxX() {
         return x + width;
     }
 
-/** @return max Y value of the board */
+    /**
+     * max Y value of the board
+     * 
+     * @return
+     */
     public int maxY() {
         return y + height;
     }
@@ -47,8 +63,9 @@ public class BoardVis extends Rectangle {
         // Draw grid lines
         g.setColor(Color.LIGHT_GRAY); // Set grid line color
 
-        // Calculate spacing between grid lines based on board size and number of rows/columns (n)
-        int cellSize = width / n;
+        // Calculate spacing between grid lines based on board size and number of
+        // rows/columns (n)
+        int cellSize = width / (n - 1);
 
         // Draw vertical grid lines
         for (int i = 0; i <= n; i++) {
@@ -61,5 +78,9 @@ public class BoardVis extends Rectangle {
             int yPos = y + j * cellSize;
             g.drawLine(x, yPos, x + width, yPos);
         }
+    }
+
+    public void main(String args[]) {
+        BoardVis board = new BoardVis(50, 50, 500, 500, Color.GREEN, 50, 7);
     }
 }

@@ -1,3 +1,7 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "files.autoSave": "afterDelay",
+    "editor.accessibilitySupport": "off",
+    "editor.detectIndentation": false,
+    "explorer.sortOrder": "type"
 }

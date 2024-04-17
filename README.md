@@ -23,7 +23,7 @@ Board(): build board of default size
 
 Board(int len): build a board that is len X len Pieces.  Initially, each spot in the board is blank (null).
 
-getSize(): return the board’s size.
+getLength(): return the board’s size.
 
 toString(): Return the board a String that is a visible set of columns like this for a 5x5 board.
 
