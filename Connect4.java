@@ -32,8 +32,8 @@ public class Connect4 {
     // the array that belongs to it.
     public boolean gameOver() {
         // Implement logic to check if the game is over
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j < board.getSize(); j++) {
+        for (int i = 0; i < board.getLength(); i++) {
+            for (int j = 0; j < board.getLength(); j++) {
                 if (board.B[i][j] == null) {
                     return false;
                 }
@@ -55,6 +55,7 @@ public class Connect4 {
     }
 
     public static void main(String[] args) {
+        // Connect4 test code
         Connect4 game = new Connect4(5);
         System.out.println(game); // XX ok, need to add code that gets moves from the user.
         game.move(1, 0);

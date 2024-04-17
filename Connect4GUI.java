@@ -4,47 +4,35 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Connect4GUI {
-    private JFrame win;
+    private JFrame window;
+    private MyCanvas canvas;
     public static int WIDTH = 600;
-    public static int HEIGHT = 700;
+    public static int HEIGHT = 600;
     public int size;
-
-    MyCanvas canvas;
 
     /**
      * constructor for Connect4GUI
      * 
-     * @param size
+     * @param size 
      */
-    
     public Connect4GUI(int size) {
-        // creat a windwo frame and set the title in the toolbar
-        JFrame window = new JFrame("game");
-        MyCanvas canvas = new MyCanvas(WIDTH, HEIGHT);
-        // when we close the window stop the app
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//// window.setSize(900,600);
-        // canvas.setPreferredSize(prefferedsize);
+
+        canvas = new MyCanvas(WIDTH, HEIGHT);
+        window = new JFrame("game");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);
-        // fit the window around the compents (just our canvas)
-        window.pack();
-        // dont allow the user to resize the window
+        window.pack(); // fit the window around the canvas
         window.setResizable(false);
-        // open window in the center of the screen
-        window.setLocationRelativeTo(null);
-        // display the window
+        window.setLocationRelativeTo(null); // open window in the center of the screen
         window.setVisible(true);
-
-        System.out.println("works");
-
     }
-
+    
+    /** @return the size of the board */
+    public int getLength() {
+        return this.size;
+    }
     public static void main(String args[]) {
-        // constructor takes in input
         Connect4GUI gui = new Connect4GUI(4);
     }
 
-    /** @return the size of the board */
-    public int getSize() {
-        return this.size;
-    }
 }

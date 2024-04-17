@@ -1,14 +1,12 @@
 class Board {
-    // instance variables
-
-    int len;
+    int len; // length of the board, different to size the total number
     Piece p;
-    int col;
     Piece[][] B;
 
-    public Board()
-    // constructor, initially each spot set to null
-    {
+    /**
+     * Constructor: create a 5x5 board, with all null pieces
+     */
+    public Board() {
         len = 5;
         B = new Piece[len][len];
         for (int i = 0; i < len; i++) {
@@ -22,7 +20,7 @@ class Board {
      * Constructor with column
      * i is the row, j is the column
      * 
-     * @param col
+     * @param col the number of columns aka. length of the board
      */
     public Board(int col) {
         this.len = col;
@@ -34,13 +32,15 @@ class Board {
         }
     }
 
-    public int getSize()
-    // return this size
-    {
+    /**
+     * Return the length of the board
+     * 
+     * @return
+     */
+    public int getLength() {
         return len;
     }
 
-    public String toString()
     /*
      * return the this String to visible set of columns, like this
      * 0 1 2 3 4
@@ -50,7 +50,7 @@ class Board {
      * | | | | | |
      * |X| | | | |
      */
-    {
+    public String toString() {
         String s = "";
         for (int i = 0; i < len; i++) {
             s += i + " ";
@@ -69,8 +69,13 @@ class Board {
         return s;
     }
 
+    /**
+     * Add a piece to the board
+     * 
+     * @param P   the piece to add
+     * @param col the column number to add the piece to
+     */
     public void add(Piece P, int col)
-    // add piece to a column
     {
         int j = 0;
         while (B[col][j] != null) {
@@ -81,16 +86,14 @@ class Board {
 
     /**
      * Return the winner of the game, in char
+     * Using if statements to check if there are four in a row, horizontally, vertically, or diagonally
      * 
-     * @return
+     * @return char of the winner
      */
     public char winner() {
-        // Implement logic to check if there's a winner
-        // check if four in a row horizontally, vertically, or diagonally
-
         // check horizontally
-        for (int i = 0; i < this.getSize(); i++) {
-            for (int j = 0; j < this.getSize(); j++) {
+        for (int i = 0; i < this.getLength(); i++) {
+            for (int j = 0; j < this.getLength(); j++) {
                 if (this.B[i][j] != null
                         && this.B[i + 1][j] != null
                         && this.B[i + 2][j] != null
@@ -102,8 +105,8 @@ class Board {
             }
         }
         // check vertically
-        for (int i = 0; i < this.getSize(); i++) {
-            for (int j = 0; j < this.getSize(); j++) {
+        for (int i = 0; i < this.getLength(); i++) {
+            for (int j = 0; j < this.getLength(); j++) {
                 if (this.B[i][j] != null
                         && this.B[i][j + 1] != null
                         && this.B[i][j + 2] != null
@@ -116,8 +119,8 @@ class Board {
             }
         }
         // check diagonally
-        for (int i = 0; i < this.getSize(); i++) {
-            for (int j = 0; j < this.getSize(); j++) {
+        for (int i = 0; i < this.getLength(); i++) {
+            for (int j = 0; j < this.getLength(); j++) {
                 if (this.B[i][j] != null
                         && this.B[i + 1][j + 1] != null
                         && this.B[i + 2][j + 2] != null
@@ -130,15 +133,15 @@ class Board {
             }
         }
         // check diagonally
-        for (int i = 0; i < this.getSize(); i++) {
-            for (int j = 0; j < this.getSize(); j++) {
+        for (int i = 0; i < this.getLength(); i++) {
+            for (int j = 0; j < this.getLength(); j++) {
                 if (this.B[i][j] != null
                         && this.B[i + 1][j - 1] != null
                         && this.B[i + 2][j - 2] != null
                         && this.B[i + 3][j - 3] != null
                         && this.B[i][j].player == this.B[i + 1][j - 1].player
                         && this.B[i][j].player == this.B[i + 2][j - 2].player
-                        && this.B[i][j].player == this.B[i + 3][j - 3].player ) {
+                        && this.B[i][j].player == this.B[i + 3][j - 3].player) {
                     return this.B[i][j].player;
                 }
             }
@@ -149,7 +152,8 @@ class Board {
     }
 
     public static void main(String[] args) {
-        // test the class, create and add pieces to the board, also test the winner method
+        // test the class, create and add pieces to the board, also test the winner
+        // method
         Board b = new Board();
         System.out.println(b.toString());
         Piece p = new Piece('x');
