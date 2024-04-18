@@ -192,10 +192,10 @@ class MyCanvas extends JPanel implements KeyListener {
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 if (B[i][j].toString() == "Player1") {
-                    add(padding + i * slotSize + slotSize / 2, padding + j * slotSize + slotSize / 2, PLAYER1_COLOR);
+                    add( ix + i * slotSize + slotSize / 2, h - (iy + j * slotSize + slotSize / 2 ), PLAYER1_COLOR);
                 }
                 if (B[i][j].toString() == "Player2") {
-                    add(padding + i * slotSize + slotSize / 2, padding + j * slotSize + slotSize / 2, PLAYER2_COLOR);
+                    add( ix + i * slotSize + slotSize / 2, h -(iy + j * slotSize + slotSize / 2), PLAYER2_COLOR);
                 }
             }
         }

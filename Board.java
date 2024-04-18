@@ -81,7 +81,7 @@ class Board {
         Piece P = new Piece(player);
         int j = 0;
 
-        while (B[col - 1][j].toString() != "no winner" && j < len - 1) {
+        while (B[col - 1][j].toString() != "no winner" && j < len) {
             j++;
         }
         // if statement to avoid out of bounds exception when adding a piece to a full
@@ -93,6 +93,10 @@ class Board {
         return false;
     }
 
+    /**
+     * the gameOver returns true with a winner or a tie when the board is full
+     * @return boolean
+     */
     public boolean gameOver() {
         // Implement logic to check if the game is over
         for (int i = 0; i < this.getLength(); i++) {
