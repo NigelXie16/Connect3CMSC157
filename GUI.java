@@ -15,17 +15,18 @@ public class GUI {
      * 
      * @param size
      */
-    public GUI(int size) {
+    public GUI(int size, Board board) {
 
         JFrame window = new JFrame("Connect 4 ;)");
-        Board board = new Board(5);
+        board = new Board(5);
         MyCanvas canvas = new MyCanvas(600, 600, board);
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);
         window.pack();
         window.setResizable(false);
-        window.setLocationRelativeTo(null);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        window.setLocation(screenSize.width - window.getWidth(), 0);
         window.setVisible(true);
     }
 
@@ -36,10 +37,6 @@ public class GUI {
      */
     public int getLength() {
         return this.size;
-    }
-
-    public static void main(String args[]) {
-        GUI gui = new GUI(4);
     }
 
 }

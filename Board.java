@@ -46,11 +46,11 @@ class Board {
     /*
      * return the this String to visible set of columns, like this
      * 1 2 3 4 5
-     * | | | | | |
-     * | | | | | |
-     * | | | | | |
-     * | | | | | |
      * |X| | | | |
+     * | | | | | |
+     * | | | | | |
+     * | | | | | |
+     * | | | | | |
      */
     public String toString() {
         String s = ""; // the master string that is yet to includes the whole board
@@ -80,10 +80,12 @@ class Board {
     public boolean add(String player, int col) {
         Piece P = new Piece(player);
         int j = 0;
-        while (B[col - 1][j].toString() != "no winner") {
+
+        while (B[col - 1][j].toString() != "no winner" && j < len - 1) {
             j++;
         }
-        // if statement to avoid out of bounds exception when adding a piece to a full column
+        // if statement to avoid out of bounds exception when adding a piece to a full
+        // column
         if (j < len) {
             B[col - 1][j] = P;
             return true;
@@ -170,6 +172,15 @@ class Board {
         }
 
         return "no winner";
+    }
+
+    /**
+     * Return the board
+     * 
+     * @return B as a 2D array B[][]
+     */
+    public Piece[][] getBoard() {
+        return B;
     }
 
     public static void main(String[] args) {

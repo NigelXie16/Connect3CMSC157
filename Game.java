@@ -12,9 +12,11 @@ public class Game {
     }
 
     private Board board;
+    private GUI canvas;
 
     public Game() {
         board = new Board(5); // Adjust the board size as needed
+        canvas = new GUI(5, board);
     }
 
     public void start() {
@@ -27,6 +29,7 @@ public class Game {
             board.add("Player1", column1);
 
             if (board.gameOver()) {
+                System.out.println("Game over!");
                 break;
             }
 
