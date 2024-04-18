@@ -1,8 +1,4 @@
 
-/**
- * This class is used to draw the board 
-*/
-
 import java.awt.*;
 
 public class BoardVis extends Rectangle {
@@ -16,43 +12,6 @@ public class BoardVis extends Rectangle {
         this.color = color;
         this.tokensize = tokensize;
         this.n = n;
-
-    }
-
-    /**
-     * minimum X value of the board
-     * 
-     * @return
-     */
-    public int minX() {
-        return x;
-    }
-
-    /**
-     * minimum Y value of the board
-     * 
-     * @return
-     */
-    public int minY() {
-        return y;
-    }
-
-    /**
-     * max X value of the board
-     * 
-     * @return
-     */
-    public int maxX() {
-        return x + width;
-    }
-
-    /**
-     * max Y value of the board
-     * 
-     * @return
-     */
-    public int maxY() {
-        return y + height;
     }
 
     public void draw(Graphics g) {

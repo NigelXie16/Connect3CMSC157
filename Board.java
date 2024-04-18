@@ -4,30 +4,32 @@ class Board {
     Piece[][] B;
 
     /**
-     * Constructor: create a 5x5 board, with all null pieces
+     * Constructor: create a 5x5 board, with "no winner" pieces as default
      */
     public Board() {
         len = 5;
         B = new Piece[len][len];
+
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
-                B[i][j] = null;
+                B[i][j] = new Piece("no winner");
             }
         }
     }
 
     /**
      * Constructor with column
-     * i is the row, j is the column
+     * i is the row, j is the column, starting from 0
      * 
      * @param col the number of columns aka. length of the board
      */
     public Board(int col) {
         this.len = col;
         B = new Piece[len][len];
+
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
-                B[i][j] = null;
+                B[i][j] = new Piece("no winner");
             }
         }
     }
@@ -43,7 +45,7 @@ class Board {
 
     /*
      * return the this String to visible set of columns, like this
-     * 0 1 2 3 4
+     * 1 2 3 4 5
      * | | | | | |
      * | | | | | |
      * | | | | | |
@@ -51,22 +53,22 @@ class Board {
      * |X| | | | |
      */
     public String toString() {
-        String s = "";
+        String s = ""; // the master string that is yet to includes the whole board
         for (int i = 0; i < len; i++) {
-            s += i + " ";
+            s += (i + 1) + " ";
         }
         s += "\n";
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) { // XX causes exception
-                if (B[j][i] == null) {
+                if (B[j][i].toString() == "no winner") {
                     s += "| ";
                 } else {
-                    s += "|" + B[j][i].toString();
+                    s += "|" + B[j][i];
                 }
             }
             s += "|\n";
         }
-        return s;
+        return s; // the master string that includes the whole board
     }
 
     /**
@@ -75,29 +77,48 @@ class Board {
      * @param P   the piece to add
      * @param col the column number to add the piece to
      */
-    public void add(Piece P, int col)
-    {
+    public boolean add(String player, int col) {
+        Piece P = new Piece(player);
         int j = 0;
-        while (B[col][j] != null) {
+        while (B[col - 1][j].toString() != "no winner") {
             j++;
         }
-        B[col][j] = P;
+        // if statement to avoid out of bounds exception when adding a piece to a full column
+        if (j < len) {
+            B[col - 1][j] = P;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean gameOver() {
+        // Implement logic to check if the game is over
+        for (int i = 0; i < this.getLength(); i++) {
+            for (int j = 0; j < this.getLength(); j++) {
+                if (this.B[i][j].toString() == "no winner") {
+                    return false;
+                }
+            }
+        }
+        if (winner() == "no winner") {
+            return false;
+        }
+        return true;
     }
 
     /**
-     * Return the winner of the game, in char
-     * Using if statements to check if there are four in a row, horizontally, vertically, or diagonally
+     * Return the winner of the game in String, or return "no winner"
      * 
-     * @return char of the winner
+     * @return Player String, or return "no winner"
      */
     public String winner() {
         // check horizontally
-        for (int i = 0; i < this.getLength(); i++) {
+        for (int i = 0; i < this.getLength() - 4; i++) {
             for (int j = 0; j < this.getLength(); j++) {
-                if (this.B[i][j] != null
-                        && this.B[i + 1][j] != null
-                        && this.B[i + 2][j] != null
-                        && this.B[i + 3][j] != null
+                if (this.B[i][j].toString() != "no winner"
+                        && this.B[i + 1][j].toString() != "no winner"
+                        && this.B[i + 2][j].toString() != "no winner"
+                        && this.B[i + 3][j].toString() != "no winner"
                         && this.B[i][j].player == this.B[i + 1][j].player
                         && this.B[i][j].player == this.B[i + 2][j].player
                         && this.B[i][j].player == this.B[i + 3][j].player)
@@ -106,11 +127,11 @@ class Board {
         }
         // check vertically
         for (int i = 0; i < this.getLength(); i++) {
-            for (int j = 0; j < this.getLength(); j++) {
-                if (this.B[i][j] != null
-                        && this.B[i][j + 1] != null
-                        && this.B[i][j + 2] != null
-                        && this.B[i][j + 3] != null
+            for (int j = 0; j < this.getLength() - 4; j++) {
+                if (this.B[i][j].toString() != "no winner"
+                        && this.B[i][j + 1].toString() != "no winner"
+                        && this.B[i][j + 2].toString() != "no winner"
+                        && this.B[i][j + 3].toString() != "no winner"
                         && this.B[i][j].player == this.B[i][j + 1].player
                         && this.B[i][j].player == this.B[i][j + 2].player
                         && this.B[i][j].player == this.B[i][j + 3].player) {
@@ -119,12 +140,12 @@ class Board {
             }
         }
         // check diagonally
-        for (int i = 0; i < this.getLength(); i++) {
-            for (int j = 0; j < this.getLength(); j++) {
-                if (this.B[i][j] != null
-                        && this.B[i + 1][j + 1] != null
-                        && this.B[i + 2][j + 2] != null
-                        && this.B[i + 3][j + 3] != null
+        for (int i = 0; i < this.getLength() - 4; i++) {
+            for (int j = 0; j < this.getLength() - 4; j++) {
+                if (this.B[i][j].toString() != "no winner"
+                        && this.B[i + 1][j + 1].toString() != "no winner"
+                        && this.B[i + 2][j + 2].toString() != "no winner"
+                        && this.B[i + 3][j + 3].toString() != "no winner"
                         && this.B[i][j].player == this.B[i + 1][j + 1].player
                         && this.B[i][j].player == this.B[i + 2][j + 2].player
                         && this.B[i][j].player == this.B[i + 3][j + 3].player) {
@@ -133,12 +154,12 @@ class Board {
             }
         }
         // check diagonally
-        for (int i = 0; i < this.getLength(); i++) {
-            for (int j = 0; j < this.getLength(); j++) {
-                if (this.B[i][j] != null
-                        && this.B[i + 1][j - 1] != null
-                        && this.B[i + 2][j - 2] != null
-                        && this.B[i + 3][j - 3] != null
+        for (int i = 0; i <= this.getLength() - 4; i++) {
+            for (int j = 3; j < this.getLength(); j++) {
+                if (this.B[i][j].toString() != "no winner"
+                        && this.B[i + 1][j - 1].toString() != "no winner"
+                        && this.B[i + 2][j - 2].toString() != "no winner"
+                        && this.B[i + 3][j - 3].toString() != "no winner"
                         && this.B[i][j].player == this.B[i + 1][j - 1].player
                         && this.B[i][j].player == this.B[i + 2][j - 2].player
                         && this.B[i][j].player == this.B[i + 3][j - 3].player) {
@@ -156,16 +177,12 @@ class Board {
         // method
         Board b = new Board();
         System.out.println(b.toString());
-        Piece p = new Piece("player1");
-        Piece p1 = new Piece("player1");
-        Piece p2 = new Piece("player1");
-        Piece p3 = new Piece("player1");
-        b.add(p, 0);
-        b.add(p1, 1);
-        b.add(p2, 2);
-        b.add(p3, 3);
+        b.add("Player1", 1);
+        b.add("Player1", 1);
+        b.add("Player1", 1);
+        b.add("Player2", 1);
         System.out.println(b.toString());
-        System.out.println(b.winner());
+        System.out.println(b.winner() + " wins!");
     }
 
 }

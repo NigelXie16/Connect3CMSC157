@@ -11,37 +11,37 @@ public class Game {
         scanner.close(); // Close the scanner when the program exits
     }
 
-    private Connect4 connect4;
+    private Board board;
 
     public Game() {
-        connect4 = new Connect4(5); // Adjust the board size as needed
+        board = new Board(5); // Adjust the board size as needed
     }
 
     public void start() {
-        System.out.println("Starting Connect4 Game...");
+        System.out.println("Starting board Game...");
 
-        while (!connect4.gameOver()) {
-            System.out.println(connect4);
+        while (!board.gameOver()) {
+            System.out.println(board);
             System.out.println("Player 1's turn (Enter column number): ");
             int column1 = scanner.nextInt();
-            connect4.move(1, column1);
+            board.add("Player1", column1);
 
-            if (connect4.gameOver()) {
+            if (board.gameOver()) {
                 break;
             }
 
-            System.out.println(connect4);
+            System.out.println(board);
             System.out.println("Player 2's turn (Enter column number): ");
             int column2 = scanner.nextInt();
-            connect4.move(2, column2);
+            board.add("Player2", column2);
         }
 
-        System.out.println(connect4);
-        char winner = connect4.winner();
-        if (winner == 'N') {
+        System.out.println(board);
+        String winner = board.winner();
+        if (winner == "no winner") {
             System.out.println("It's a draw!");
         } else {
-            System.out.println("Player " + winner + " wins!");
+            System.out.println( winner + " wins!");
         }
     }
 }

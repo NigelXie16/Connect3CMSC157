@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Connect4GUI {
+public class GUI {
     private JFrame window;
     private MyCanvas canvas;
     public static int WIDTH = 600;
@@ -13,26 +13,33 @@ public class Connect4GUI {
     /**
      * constructor for Connect4GUI
      * 
-     * @param size 
+     * @param size
      */
-    public Connect4GUI(int size) {
+    public GUI(int size) {
 
-        //canvas = new MyCanvas(WIDTH, HEIGHT);
-        window = new JFrame("game");
+        JFrame window = new JFrame("Connect 4 ;)");
+        Board board = new Board(5);
+        MyCanvas canvas = new MyCanvas(600, 600, board);
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);
-        window.pack(); // fit the window around the canvas
+        window.pack();
         window.setResizable(false);
-        window.setLocationRelativeTo(null); // open window in the center of the screen
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
-    
-    /** @return the size of the board */
+
+    /**
+     * the size of the board
+     * 
+     * @return
+     */
     public int getLength() {
         return this.size;
     }
+
     public static void main(String args[]) {
-        Connect4GUI gui = new Connect4GUI(4);
+        GUI gui = new GUI(4);
     }
 
 }

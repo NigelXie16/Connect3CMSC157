@@ -1,16 +1,28 @@
 class Piece {
-    // XX I'd recommend some constants here for player1 and 2.
-    public String player = "";
-    // public static char PLAYER2 = 'O'; //maybe only
+    // Instance variable to store the player
+    public String player;
 
-    // Constructor to initialize the piece with a specified player
+    // Constructor with player
     public Piece(String player) {
         this.player = player;
     }
 
-    // Method to represent the piece as a string
+    // Method to set the player
+    public void setPlayer(String player) {
+        this.player = player;
+    }
+
+    // Method to return Piece as a string
     @Override
     public String toString() {
         return String.valueOf(player);
+    }
+
+    // test the Piece class
+    public static void main(String[] args) {
+        Piece p = new Piece("Player1");
+        System.out.println(p);
+        p.setPlayer("Player2");
+        System.out.println(p);
     }
 }
